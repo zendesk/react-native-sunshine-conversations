@@ -72,5 +72,5 @@ Smooch.track("User tapped");
 
 Learn more about the functions we've wrapped by checking out SmoochClient.js in the "lib" directory.
 
-!(https://media.giphy.com/media/h9KtiB6DgiS2s/giphy.gif)
+![](https://media.giphy.com/media/h9KtiB6DgiS2s/giphy.gif)
 
