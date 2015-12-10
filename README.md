@@ -26,6 +26,8 @@ Next, grab this React component with `npm install react-native-smooch`
 }
 ```
 
+3. Go to `node_modules/react-native-smooch/ios` and drag `SmoochManager.h` and `SmoochManager.m` into your XCode file tree so that they're included in the build.
+
 You're now ready to start interacting with Smooch in your React Native app.
 
 ## Android
