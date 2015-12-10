@@ -14,9 +14,9 @@ Next, grab this React component with `npm install react-native-smooch`
 
 ## iOS
 
-1. Navigate to the .xcodeproj in your React Native project's directory and follow [these steps](http://docs.smooch.io/ios/#adding-smooch-to-your-app) for adding the Smooch binary distribution to your project with CocoaPods.
+ * Navigate to the .xcodeproj in your React Native project's directory and follow [these steps](http://docs.smooch.io/ios/#adding-smooch-to-your-app) for adding the Smooch binary distribution to your project with CocoaPods.
 
-2. Open your project's .xcworkspace file in XCode and initialize Smooch with your app token inside of applicationDidFinishLaunchingWithOptions.
+ * Open your project's .xcworkspace file in XCode and initialize Smooch with your app token inside of applicationDidFinishLaunchingWithOptions.
 
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -26,7 +26,7 @@ Next, grab this React component with `npm install react-native-smooch`
 }
 ```
 
-3. Go to `node_modules/react-native-smooch/ios` and drag `SmoochManager.h` and `SmoochManager.m` into your XCode file tree so that they're included in the build.
+ * Go to `node_modules/react-native-smooch/ios` and drag `SmoochManager.h` and `SmoochManager.m` into your XCode file tree so that they're included in the build.
 
 You're now ready to start interacting with Smooch in your React Native app.
 
