@@ -1,6 +1,8 @@
 # react-native-smooch
 React Native wrapper for Smooch.io. Based off of [smooch-cordova](https://github.com/smooch/smooch-cordova)
 
+This React Native module was built and tested with version 0.18 of React Native. Since React Native is not mature yet, there might be some breaking changes which will break our module. Therefore, if you find a problem, please open an issue.
+
 At the moment, this wrapper only covers the most commonly used features of the Smooch SDK. We encourage you to add to this wrapper or make any feature requests you need. Pull requests most definitely welcome!
 
 Please hit up [@gozmike](https://twitter.com/gozmike) with any questions or [contact Smooch](mailto:help@smooch.io).
@@ -10,15 +12,21 @@ Installing Smooch on React Native
 
 First, make sure you've [signed up for Smooch](https://app.smooch.io/signup)
 
-Next, grab this React component with `npm install react-native-smooch`
+If you don't already have a React Native application setup, follow the instructions [here](https://facebook.github.io/react-native/docs/getting-started.html) to create one.
+
+Next, grab this React Native module with `npm install react-native-smooch`
 
 ## iOS
 
- * Navigate to the .xcodeproj in your React Native project's directory and follow [these steps](http://docs.smooch.io/ios/#adding-smooch-to-your-app) for adding the Smooch binary distribution to your project with CocoaPods.
+ * Navigate to your React Native project's `ios` directory and follow [these steps](http://docs.smooch.io/ios/#adding-smooch-to-your-app) for adding the Smooch binary distribution to your project with CocoaPods.
 
  * Open your project's .xcworkspace file in XCode and initialize Smooch with your app token inside of applicationDidFinishLaunchingWithOptions.
 
 ```
+#import <Smooch/Smooch.h>
+
+...
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Initialize Smooch - these instructions are also available on [app.smooch.io](https://app.smooch.io)
     [Smooch initWithSettings:
@@ -32,7 +40,58 @@ You're now ready to start interacting with Smooch in your React Native app.
 
 ## Android
 
-Coming soon!
+* Open the `/android` directory of your React Native project in Android Studio.
+* Open the `/android/build.gradle` file. Make sure that `jcenter()` is listed in the repositories.
+```
+buildscript {
+    repositories {
+        jcenter()
+    }
+    ...
+```
+
+* Open the `/android/app/build.gradle` file and add Smooch to the dependencies.
+```
+dependencies {
+    ...
+    compile 'io.smooch:core:latest.release'
+    compile 'io.smooch:ui:latest.release'
+}
+```
+
+* Create an Application class for the React project. Add `Smooch.init` in the `onCreate` method.
+```
+public class ReactNativeApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Smooch.init(this, "<your-smooch-app-token>");
+    }
+}
+```
+
+* In the `AndroidManifest.xml` file, make sure to reference the application class you just created (replace `<package-name>` with your React Application's package name).
+
+```
+<application
+  android:name="<package-name>.ReactNativeApplication"
+  ...
+  >
+```
+
+* Copy the `SmoochManager.java` and `SmoochPackage.java` files from `node_modules/react-native-smooch/android` into your the Android project.
+* In the `MainActivity.java` file, add `new SmoochPackage()` to the `getPackages()` method.
+
+```
+ @Override
+ protected List<ReactPackage> getPackages() {
+   return Arrays.asList(
+     new MainReactPackage(), new SmoochPackage());
+ }
+ ```
+
+You're now ready to start interacting with Smooch in your React Native app.
 
 Using Smooch in your React Native App
 =====================================
@@ -75,4 +134,3 @@ Smooch.track("User tapped");
 Learn more about the functions we've wrapped by checking out SmoochClient.js in the "lib" directory.
 
 ![](https://media.giphy.com/media/h9KtiB6DgiS2s/giphy.gif)
-
