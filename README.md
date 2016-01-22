@@ -54,6 +54,11 @@ buildscript {
 ```
 dependencies {
     ...
+    compile 'com.google.android.gms:play-services-gcm:7.8.0'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'io.smooch:core:latest.release'
+    compile 'io.smooch:ui:latest.release'
     compile 'io.smooch:core:latest.release'
     compile 'io.smooch:ui:latest.release'
 }
@@ -61,6 +66,9 @@ dependencies {
 
 * Create an Application class for the React project. Add `Smooch.init` in the `onCreate` method.
 ```
+//...
+import io.smooch.core.Smooch; // <-- add this line
+//...
 public class ReactNativeApplication extends Application {
 
     @Override
@@ -84,12 +92,56 @@ public class ReactNativeApplication extends Application {
 * In the `MainActivity.java` file, add `new SmoochPackage()` to the `getPackages()` method.
 
 ```
+//...
+import io.smooch.core.Smooch; // <-- add this line
+//...
  @Override
  protected List<ReactPackage> getPackages() {
    return Arrays.asList(
-     new MainReactPackage(), new SmoochPackage());
+     new MainReactPackage(),
+      //...
+        new SmoochPackage()); // <-- add this line
+      //..
  }
  ```
+ 
+Make sure you have installed Google Play services and Google Repository package from Android SDK 
+
+Add these permissions in android/app/src/main/AndroidManifest.xml
+```
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+```
+Add these services in AndroidManifest.xml:
+```
+<application ...
+<service android:name="io.smooch.core.service.SmoochService"/>
+<service android:name="io.smooch.core.GcmInstanceIDListenerService" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.gms.iid.InstanceID"/>
+    </intent-filter>
+</service>
+<service android:name="io.smooch.core.GcmRegistrationIntentService" android:exported="false"/>
+<service android:name="io.smooch.core.GcmService" android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+    </intent-filter>
+</service>
+<receiver
+        android:name="io.smooch.ui.notification.NotificationReceiver"
+        android:exported="false">
+    <intent-filter>
+        <action android:name="io.smooch.NOTIFICATION"/>
+    </intent-filter>
+</receiver>
+
+<activity android:name="io.smooch.ui.ConversationActivity" android:theme="@style/Theme.Smooch" />
+
+...   </application>
+ ```
+[More information](http://docs.smooch.io/android/#adding-smooch-to-your-app) 
+
 
 You're now ready to start interacting with Smooch in your React Native app.
 
