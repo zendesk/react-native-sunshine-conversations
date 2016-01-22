@@ -57,9 +57,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-gcm:7.8.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
-    compile 'io.smooch:core:latest.release'
-    compile 'io.smooch:ui:latest.release'
-    compile 'io.smooch:core:latest.release'
+    compile 'io.smooch:core:latest.release'        
     compile 'io.smooch:ui:latest.release'
 }
 ```
