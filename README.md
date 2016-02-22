@@ -40,6 +40,8 @@ You're now ready to start interacting with Smooch in your React Native app.
 
 ## Android
 
+You can easily add a binding to the [Smooch Android SDK](https://github.com/smooch/smooch-android) in your React Native application by following the instructions below.
+
 * Open the `/android` directory of your React Native project in Android Studio.
 * Open the `/android/build.gradle` file. Make sure that `jcenter()` is listed in the repositories.
 ```
@@ -54,33 +56,42 @@ buildscript {
 ```
 dependencies {
     ...
+    compile 'com.google.android.gms:play-services-gcm:7.8.0'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'io.smooch:core:latest.release'
     compile 'io.smooch:ui:latest.release'
 }
 ```
 
 * Create an Application class for the React project. Add `Smooch.init` in the `onCreate` method.
-```
+```java
+import io.smooch.core.Smooch; // add this line
+
 public class ReactNativeApplication extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Add this line to initialize your app with Smooch
+        // Copy-paste your app token here from the Settings tab in the Smooch dashboard
         Smooch.init(this, "<your-smooch-app-token>");
     }
 }
 ```
 
-* In the `AndroidManifest.xml` file, make sure to reference the application class you just created (replace `<package-name>` with your React Application's package name).
+* In the `AndroidManifest.xml` file, make sure to reference the application class you just created (replace `<your-package-name>` with your React Application's package name).
 
 ```
 <application
-  android:name="<package-name>.ReactNativeApplication"
+  android:name="<your-package-name>.ReactNativeApplication"
   ...
   >
 ```
 
 * Copy the `SmoochManager.java` and `SmoochPackage.java` files from `node_modules/react-native-smooch/android` into your the Android project.
+* Update the package name in the `SmoochManager.java` and `SmoochPackage.java` to your project's package name.
 * In the `MainActivity.java` file, add `new SmoochPackage()` to the `getPackages()` method.
 
 ```
