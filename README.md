@@ -56,17 +56,15 @@ buildscript {
 ```
 dependencies {
     ...
-    compile 'com.google.android.gms:play-services-gcm:7.8.0'
-    compile 'com.google.code.gson:gson:2.3.1'
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'io.smooch:core:latest.release'
     compile 'io.smooch:ui:latest.release'
 }
 ```
 
+
 * Create an Application class for the React project. Add `Smooch.init` in the `onCreate` method.
 ```java
-import io.smooch.core.Smooch; // add this line
+import io.smooch.core.Smooch;
 
 public class ReactNativeApplication extends Application {
 
@@ -94,7 +92,9 @@ public class ReactNativeApplication extends Application {
 * Update the package name in the `SmoochManager.java` and `SmoochPackage.java` to your project's package name.
 * In the `MainActivity.java` file, add `new SmoochPackage()` to the `getPackages()` method.
 
-```
+```java
+import io.smooch.core.Smooch;
+
  @Override
  protected List<ReactPackage> getPackages() {
    return Arrays.asList(
