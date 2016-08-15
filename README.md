@@ -18,16 +18,16 @@ Next, grab this React Native module with `npm install react-native-smooch`
 
 ## iOS
 
- * Add react-native-smooch to your Podfile
+ * Add react-native-smooch to your `Podfile`:
 
 ```
+...
 pod 'react-native-smooch',
     :path => '../node_modules/react-native-smooch'
+...
 ```
 
- * Install the pod
-
-   `pod install`
+ * Install it: `pod install`
 
  * Open your project's .xcworkspace file in XCode and initialize Smooch with your app token inside of applicationDidFinishLaunchingWithOptions.
 
