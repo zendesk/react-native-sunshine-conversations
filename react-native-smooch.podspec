@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.homepage     = 'n/a'
   s.source       = { :git => "https://github.com/smooch/react-native-smooch" }
   s.source_files = 'ios/*'
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
   s.dependency 'Smooch', '~> 4.0'
-  s.dependency 'React'
 end
