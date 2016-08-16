@@ -18,20 +18,29 @@ Next, grab this React Native module with `npm install react-native-smooch`
 
 ## iOS
 
- * With CococaPods:
+ * With CococaPods, you can add the react-native-smooch Pod in your `Podfile` like so:
 
-   Add the react-native-smooch Pod in your `Podfile`:
+ ```
+ pod 'react-native-smooch',
+     :path => '../node_modules/react-native-smooch'
+ ```
 
-```
-...
-pod 'react-native-smooch',
-    :path => '../node_modules/react-native-smooch'
-...
-```
+ * You must also have your React dependencies defined in your Podfile as described [here](http://facebook.github.io/react-native/releases/0.31/docs/troubleshooting.html#missing-libraries-for-react), for example:
 
-   Install it by running `pod install`.
+ ```
+ pod 'React', :subspecs => [
+     'Core',
+     'RCTImage',
+     'RCTNetwork',
+     'RCTPushNotification',
+     'RCTText',
+     // ...
+ ], :path => '../node_modules/react-native'
+ ```
 
- * Without CocoaPods, navigate to your React Native project's `ios` directory and follow [these steps](http://docs.smooch.io/ios/#adding-smooch-to-your-app).
+ * Install pods by running `pod install`.
+
+ * Without CocoaPods, you can add Smooch by navigating to your React Native project's `ios` directory and following [the manual steps here](http://docs.smooch.io/ios/#adding-smooch-to-your-app).
 
  * Open your project's .xcworkspace file in XCode and initialize Smooch with your app token inside of applicationDidFinishLaunchingWithOptions.
 
