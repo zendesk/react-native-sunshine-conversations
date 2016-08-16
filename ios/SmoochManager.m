@@ -60,4 +60,12 @@ RCT_EXPORT_METHOD(setEmail:(NSString*)email) {
   [SKTUser currentUser].email = email;
 };
 
+
+RCT_EXPORT_METHOD(setSignedUpAt:(NSDate*)date) {
+  NSLog(@"Smooch setSignedUpAt");
+
+  [SKTUser currentUser].signedUpAt = date;
+};
+
+
 @end

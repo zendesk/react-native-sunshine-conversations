@@ -154,6 +154,12 @@ Smooch.setLastName("Osiander");
 Smooch.setEmail("kurt@ralphgraciesf.com");
 ```
 
+### Set the user's sign up date
+```javascript
+Smooch.setSignedUpAt( (new Date).getTime() );
+```
+
+
 ### Associate key/value pairs with the user
 ```javascript
 Smooch.setUserProperties({"whenDidYouFsckUp": "aLongTimeAgo"});
