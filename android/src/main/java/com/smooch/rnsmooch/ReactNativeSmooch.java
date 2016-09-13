@@ -1,8 +1,5 @@
-package <your-package-name>;
+package com.smooch.rnsmooch;
 
-import android.util.Log;
-
-import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -10,10 +7,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,13 +18,13 @@ import io.smooch.core.Smooch;
  * Created by mario on 2016-01-18.
  */
 
-public class SmoochManager extends ReactContextBaseJavaModule {
+public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
         return "SmoochManager";
     }
 
-    public SmoochManager(ReactApplicationContext reactContext) {
+    public ReactNativeSmooch(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
@@ -42,7 +35,7 @@ public class SmoochManager extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void show() {
-        ConversationActivity.show(getCurrentActivity());
+        ConversationActivity.show(getReactApplicationContext());
     }
 
     @ReactMethod
