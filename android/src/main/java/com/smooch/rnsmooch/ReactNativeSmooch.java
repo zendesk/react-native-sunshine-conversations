@@ -1,6 +1,7 @@
 package com.smooch.rnsmooch;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -31,8 +32,6 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
         super(reactContext);
     }
 
-    final Activity currentActivity = this.getCurrentActivity();
-
     @ReactMethod
     public void login(String userId, String jwt) {
         Smooch.login(userId, jwt);
@@ -40,13 +39,7 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void show() {
-        if (currentActivity == null) {
-            // The currentActivity can be null if it is backgrounded / destroyed, so we simply
-            // no-op to prevent any null pointer exceptions.
-            return;
-        } else {
-            ConversationActivity.show(currentActivity);
-        }
+        ConversationActivity.show(getReactApplicationContext(), Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
     @ReactMethod
