@@ -64,65 +64,36 @@ You're now ready to start interacting with Smooch in your React Native app.
 
 You can easily add a binding to the [Smooch Android SDK](https://github.com/smooch/smooch-android) in your React Native application by following the instructions below.
 
-* Open the `/android` directory of your React Native project in Android Studio.
-* Open the `/android/build.gradle` file. Make sure that `jcenter()` is listed in the repositories.
+* Link the react-native-smooch package
+
 ```
-buildscript {
-    repositories {
-        jcenter()
-    }
-    ...
+react-native link react-native-smooch
 ```
 
-* Open the `/android/app/build.gradle` file and add Smooch to the dependencies.
-```
-dependencies {
-    ...
-    compile 'io.smooch:core:latest.release'
-    compile 'io.smooch:ui:latest.release'
+* Add the `ReactNativeSmoochPackage` to the list of packages in your `ReactApplication`
+```java
+@Override
+protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+            new MainReactPackage(),
+            new ReactNativeSmoochPackage()
+    );
 }
 ```
 
-
-* Create an Application class for the React project. Add `Smooch.init` in the `onCreate` method.
+* Add `Smooch.init` to the `onCreate` method of your `Application` class.
 ```java
-import io.smooch.core.Smooch;
-
-public class ReactNativeApplication extends Application {
-
+public class MainApplication extends Application implements ReactApplication {
+    ...
     @Override
     public void onCreate() {
         super.onCreate();
-
-        // Add this line to initialize your app with Smooch
-        // Copy-paste your app token here from the Settings tab in the Smooch dashboard
+        SoLoader.init(this, /* native exopackage */ false);
         Smooch.init(this, "<your-smooch-app-token>");
     }
+    ...
 }
 ```
-
-* In the `AndroidManifest.xml` file, make sure to reference the application class you just created (replace `<your-package-name>` with your React Application's package name).
-
-```
-<application
-  android:name="<your-package-name>.ReactNativeApplication"
-  ...
-  >
-```
-
-* Copy the `SmoochManager.java` and `SmoochPackage.java` files from `node_modules/react-native-smooch/android` into your the Android project.
-* Update the package name in the `SmoochManager.java` and `SmoochPackage.java` to your project's package name.
-* In the `MainActivity.java` file, add `new SmoochPackage()` to the `getPackages()` method.
-
-```java
-import io.smooch.core.Smooch;
-
- @Override
- protected List<ReactPackage> getPackages() {
-   return Arrays.asList(
-     new MainReactPackage(), new SmoochPackage());
- }
- ```
 
 You're now ready to start interacting with Smooch in your React Native app.
 
@@ -158,7 +129,6 @@ Smooch.setEmail("kurt@ralphgraciesf.com");
 ```javascript
 Smooch.setSignedUpAt( (new Date).getTime() );
 ```
-
 
 ### Associate key/value pairs with the user
 ```javascript
