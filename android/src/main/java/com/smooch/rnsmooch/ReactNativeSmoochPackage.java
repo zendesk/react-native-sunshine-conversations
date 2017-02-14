@@ -10,11 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by mario on 2016-01-18.
- */
 public class ReactNativeSmoochPackage implements ReactPackage {
-
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
