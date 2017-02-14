@@ -1,9 +1,7 @@
 package com.smooch.rnsmooch;
 
-import android.app.Activity;
 import android.content.Intent;
 
-import com.facebook.react.ReactActivity;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -14,13 +12,9 @@ import com.facebook.react.bridge.ReadableType;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.smooch.core.Smooch;
 import io.smooch.core.User;
 import io.smooch.ui.ConversationActivity;
-import io.smooch.core.Smooch;
-
-/**
- * Created by mario on 2016-01-18.
- */
 
 public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     @Override
@@ -71,7 +65,7 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
         ReadableMapKeySetIterator iterator = properties.keySetIterator();
         Map<String, Object> userProperties = new HashMap<>();
 
-        while(iterator.hasNextKey()) {
+        while (iterator.hasNextKey()) {
             String key = iterator.nextKey();
             ReadableType type = properties.getType(key);
             if (type == ReadableType.Boolean) {
