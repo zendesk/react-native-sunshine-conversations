@@ -16,8 +16,9 @@ If you don't already have a React Native application setup, follow the instructi
 
 Next, grab this React Native module with `npm install react-native-smooch`
 
-## iOS
+Link it! `react-native link react-native-smooch`
 
+## iOS
  * With CococaPods, you can add the react-native-smooch Pod in your `Podfile` like so:
 
  ```
@@ -34,7 +35,6 @@ Next, grab this React Native module with `npm install react-native-smooch`
      'RCTNetwork',
      'RCTPushNotification',
      'RCTText',
-     // ...
  ], :path => '../node_modules/react-native'
  ```
 
@@ -56,19 +56,11 @@ Next, grab this React Native module with `npm install react-native-smooch`
 }
 ```
 
- * Go to `node_modules/react-native-smooch/ios` and drag `SmoochManager.h` and `SmoochManager.m` into your XCode file tree so that they're included in the build.
-
 You're now ready to start interacting with Smooch in your React Native app.
 
 ## Android
 
 You can easily add a binding to the [Smooch Android SDK](https://github.com/smooch/smooch-android) in your React Native application by following the instructions below.
-
-* Link the react-native-smooch package
-
-```
-react-native link react-native-smooch
-```
 
 * Add the `ReactNativeSmoochPackage` to the list of packages in your `ReactApplication`
 ```java
