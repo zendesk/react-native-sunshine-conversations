@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/smooch/react-native-smooch/issues"
   },
-  "homepage": "https://smooch.io/is"
+  "homepage": "https://smooch.io/is",
+  "dependencies": {
+    "react": "15.4.2",
+    "react-native": "0.41.2"
+  }
 }
