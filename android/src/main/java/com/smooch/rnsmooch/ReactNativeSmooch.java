@@ -32,6 +32,11 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void logout(String userId, String jwt) {
+        Smooch.logout();
+    }
+
+    @ReactMethod
     public void show() {
         ConversationActivity.show(getReactApplicationContext(), Intent.FLAG_ACTIVITY_NEW_TASK);
     }
