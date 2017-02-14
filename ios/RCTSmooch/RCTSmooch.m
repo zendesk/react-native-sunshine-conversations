@@ -1,4 +1,4 @@
-#import "SmoochManager.h"
+#import "RCTSmooch.h"
 #import <Smooch/Smooch.h>
 
 @implementation SmoochManager
