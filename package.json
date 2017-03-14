@@ -17,6 +17,6 @@
   },
   "homepage": "https://smooch.io/is",
   "dependencies": {
-    "react": "15.4.2",
+    "react": "15.4.2"
   }
 }
