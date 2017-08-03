@@ -1,6 +1,10 @@
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
+
 Pod::Spec.new do |s|
   s.name             = "react-native-smooch"
-  s.version          = "0.1.3"
+  s.version          = package['version']
   s.summary          = "A React Native client for smooch.io"
   s.requires_arc = true
   s.author       = { "Mike Gozzo" => "gozman@users.noreply.github.com" }
