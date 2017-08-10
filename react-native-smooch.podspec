@@ -1,6 +1,10 @@
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
+
 Pod::Spec.new do |s|
   s.name             = "react-native-smooch"
-  s.version          = "0.1.3"
+  s.version          = package['version']
   s.summary          = "A React Native client for smooch.io"
   s.requires_arc = true
   s.author       = { "Mike Gozzo" => "gozman@users.noreply.github.com" }
@@ -9,6 +13,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/smooch/react-native-smooch" }
   s.source_files = 'ios/*'
   s.platform     = :ios, "8.0"
-  s.dependency 'Smooch', '~> 4.0'
+  s.dependency 'Smooch', '~> 5.8'
   s.dependency 'React'
 end
