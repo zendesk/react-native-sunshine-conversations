@@ -24,7 +24,7 @@ RCT_EXPORT_METHOD(login:(NSString*)userId jwt:(NSString*)jwt) {
 RCT_EXPORT_METHOD(logout) {
   NSLog(@"Smooch Logout");
 
-dispatch_async(dispatch_get_main_queue(), ^{
+  dispatch_async(dispatch_get_main_queue(), ^{
     [Smooch logout];
   });
 };
@@ -40,6 +40,15 @@ RCT_EXPORT_METHOD(track:(NSString*)eventName) {
   NSLog(@"Smooch track with %@", eventName);
 
   [Smooch track:eventName];
+};
+
+RCT_EXPORT_METHOD(getUnreadCount,
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+  NSLog(@"Smooch getUnreadCount");
+
+  NSUInteger *unreadCount = [Smooch conversation].unreadCount;
+  resolve(unreadCount);
 };
 
 RCT_EXPORT_METHOD(setFirstName:(NSString*)firstName) {
