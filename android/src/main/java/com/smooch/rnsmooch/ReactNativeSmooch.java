@@ -47,6 +47,11 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public int getUnreadCount() {
+        return Smooch.getConversation().getUnreadCount();
+    }
+
+    @ReactMethod
     public void setFirstName(String firstName) {
         User.getCurrentUser().setFirstName(firstName);
     }
