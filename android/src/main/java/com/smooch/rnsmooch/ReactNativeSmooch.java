@@ -8,6 +8,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.bridge.Promise;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +45,12 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     @ReactMethod
     public void track(String event) {
         Smooch.track(event);
+    }
+
+    @ReactMethod
+    public void getUnreadCount(Promise promise) {
+        int unreadCount = Smooch.getConversation().getUnreadCount();
+        promise.resolve(unreadCount);
     }
 
     @ReactMethod
@@ -84,6 +91,5 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
 
         return userProperties;
     }
-
 
 }
