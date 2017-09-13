@@ -42,13 +42,13 @@ RCT_EXPORT_METHOD(track:(NSString*)eventName) {
   [Smooch track:eventName];
 };
 
-RCT_EXPORT_METHOD(getUnreadCount,
+RCT_REMAP_METHOD(getUnreadCount,
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
   NSLog(@"Smooch getUnreadCount");
 
-  NSUInteger *unreadCount = [Smooch conversation].unreadCount;
-  resolve(unreadCount);
+  long unreadCount = [Smooch conversation].unreadCount;
+  resolve(@(unreadCount));
 };
 
 RCT_EXPORT_METHOD(setFirstName:(NSString*)firstName) {
