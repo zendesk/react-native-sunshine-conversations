@@ -5,6 +5,13 @@
 
 RCT_EXPORT_MODULE();
 
+RCT_EXPORT_METHOD(init:(NSString*)appToken:(RCTResponseSenderBlock)callback) {
+  NSLog(@"Init Smooch");
+
+  [Smooch initWithSettings: [SKTSettings settingsWithAppToken:appToken]];
+  callback(@[]);
+};
+
 RCT_EXPORT_METHOD(show) {
   NSLog(@"Smooch Show");
 
