@@ -7,22 +7,25 @@ allprojects {
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "https://mave.google.com"
+        }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -37,6 +40,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.facebook.react:react-native:+'
-    compile 'io.smooch:core:latest.release'
-    compile 'io.smooch:ui:latest.release'
+    compile 'io.smooch:core:5.+'
+    compile 'io.smooch:ui:5.+'
 }

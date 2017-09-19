@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.smooch.core.Smooch;
+import io.smooch.core.SmoochCallback;
 import io.smooch.core.User;
 import io.smooch.ui.ConversationActivity;
 
@@ -28,23 +29,18 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void login(String userId, String jwt) {
-        Smooch.login(userId, jwt);
+    public void login(String userId, String jwt, SmoochCallback callback) {
+        Smooch.login(userId, jwt, callback);
     }
 
     @ReactMethod
-    public void logout(String userId, String jwt) {
-        Smooch.logout();
+    public void logout(SmoochCallback callback) {
+        Smooch.logout(callback);
     }
 
     @ReactMethod
     public void show() {
         ConversationActivity.show(getReactApplicationContext(), Intent.FLAG_ACTIVITY_NEW_TASK);
-    }
-
-    @ReactMethod
-    public void track(String event) {
-        Smooch.track(event);
     }
 
     @ReactMethod
