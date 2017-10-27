@@ -31,7 +31,7 @@ RCT_EXPORT_METHOD(login:(NSString*)userId jwt:(NSString*)jwt resolver:(RCTPromis
   });
 };
 
-RCT_EXPORT_METHOD(logoutWithCompletionHandler:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(logout:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   NSLog(@"Smooch Logout");
 
   dispatch_async(dispatch_get_main_queue(), ^{
