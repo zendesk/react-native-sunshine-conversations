@@ -19,7 +19,10 @@ RCT_EXPORT_METHOD(login:(NSString*)userId jwt:(NSString*)jwt resolver:(RCTPromis
   dispatch_async(dispatch_get_main_queue(), ^{
       [Smooch login:userId jwt:jwt completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
           if (error) {
-              reject(nil, nil, error);
+              reject(
+                 userInfo[SKTErrorCodeIdentifier],
+                 userInfo[SKTErrorDescriptionIdentifier],
+                 error);
           }
           else {
               resolve(userInfo);
@@ -34,7 +37,10 @@ RCT_EXPORT_METHOD(logoutWithCompletionHandler:(RCTPromiseResolveBlock)resolve re
   dispatch_async(dispatch_get_main_queue(), ^{
       [Smooch logoutWithCompletionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
           if (error) {
-              reject(nil, nil, error);
+              reject(
+                     userInfo[SKTErrorCodeIdentifier],
+                     userInfo[SKTErrorDescriptionIdentifier],
+                     error);
           }
           else {
               resolve(userInfo);
