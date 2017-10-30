@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.homepage     = 'n/a'
   s.source       = { :git => "https://github.com/smooch/react-native-smooch" }
-  s.source_files = 'ios/*'
+  s.source_files = 'ios/**/*.{h,m}'
   s.platform     = :ios, "8.0"
   s.dependency 'Smooch', '~> 6.0'
   s.dependency 'React'
