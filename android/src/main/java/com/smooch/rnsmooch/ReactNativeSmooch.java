@@ -29,13 +29,35 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void login(String userId, String jwt, SmoochCallback callback) {
-        Smooch.login(userId, jwt, callback);
+    public void login(String userId, String jwt, final Promise promise) {
+        Smooch.login(userId, jwt, new SmoochCallback() {
+            @Override
+            public void run(Response response) {
+                if (promise != null) {
+                    if (response.getError() != null) {
+                        promise.reject("" + response.getStatus(), response.getError());
+                        return;
+                    }
+
+                    promise.resolve(null);
+                }
+            }
+        });
     }
 
     @ReactMethod
-    public void logout(SmoochCallback callback) {
-        Smooch.logout(callback);
+    public void logout(final Promise promise) {
+        Smooch.logout(new SmoochCallback() {
+            @Override
+            public void run(Response response) {
+                if (response.getError() != null) {
+                    promise.reject("" + response.getStatus(), response.getError());
+                    return;
+                }
+
+                promise.resolve(null);
+            }
+        });
     }
 
     @ReactMethod

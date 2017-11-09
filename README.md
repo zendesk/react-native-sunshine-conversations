@@ -42,7 +42,7 @@ Link it! `react-native link react-native-smooch`
 
  * Without CocoaPods, you can add Smooch by navigating to your React Native project's `ios` directory and following [the manual steps here](http://docs.smooch.io/ios/#adding-smooch-to-your-app).
 
- * Open your project's .xcworkspace file in XCode and initialize Smooch with your app token inside of applicationDidFinishLaunchingWithOptions.
+ * Open your project's .xcworkspace file in XCode and initialize Smooch with your app id inside of applicationDidFinishLaunchingWithOptions.
 
 ```
 #import <Smooch/Smooch.h>
@@ -77,7 +77,9 @@ protected List<ReactPackage> getPackages() {
 * Add `Smooch.init` to the `onCreate` method of your `Application` class.
 
 ```java
+import io.smooch.core.Settings;
 import io.smooch.core.Smooch;
+import io.smooch.core.SmoochCallback;
 import com.facebook.soloader.SoLoader;
 
 public class MainApplication extends Application implements ReactApplication {

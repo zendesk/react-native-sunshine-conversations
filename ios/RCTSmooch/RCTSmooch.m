@@ -13,19 +13,39 @@ RCT_EXPORT_METHOD(show) {
   });
 };
 
-RCT_EXPORT_METHOD(login:(NSString*)userId jwt:(NSString*)jwt completionHandler:(nullable void(^)(NSError * _Nullable error, NSDictionary * _Nullable userInfo))handler) {
+RCT_EXPORT_METHOD(login:(NSString*)userId jwt:(NSString*)jwt resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   NSLog(@"Smooch Login");
 
   dispatch_async(dispatch_get_main_queue(), ^{
-      [Smooch login:userId jwt:jwt completionHandler:handler];
+      [Smooch login:userId jwt:jwt completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+          if (error) {
+              reject(
+                 userInfo[SKTErrorCodeIdentifier],
+                 userInfo[SKTErrorDescriptionIdentifier],
+                 error);
+          }
+          else {
+              resolve(userInfo);
+          }
+      }];
   });
 };
 
-RCT_EXPORT_METHOD(logoutWithCompletionHandler:(nullable void ( ^ ) ( NSError *_Nullable error , NSDictionary *_Nullable userInfo ))handler) {
+RCT_EXPORT_METHOD(logout:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   NSLog(@"Smooch Logout");
 
   dispatch_async(dispatch_get_main_queue(), ^{
-    [Smooch logoutWithCompletionHandler:handler];
+      [Smooch logoutWithCompletionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+          if (error) {
+              reject(
+                     userInfo[SKTErrorCodeIdentifier],
+                     userInfo[SKTErrorDescriptionIdentifier],
+                     error);
+          }
+          else {
+              resolve(userInfo);
+          }
+      }];
   });
 };
 
@@ -34,6 +54,13 @@ RCT_EXPORT_METHOD(setUserProperties:(NSDictionary*)options) {
   NSLog(@"Smooch setUserProperties with %@", options);
 
   [[SKTUser currentUser] addProperties:options];
+};
+
+RCT_EXPORT_METHOD(getUserId:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+  NSLog(@"Smooch getUserId");
+
+  resolve([SKTUser currentUser].userId);
 };
 
 RCT_REMAP_METHOD(getUnreadCount,
