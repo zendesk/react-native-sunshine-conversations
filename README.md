@@ -77,7 +77,9 @@ protected List<ReactPackage> getPackages() {
 * Add `Smooch.init` to the `onCreate` method of your `Application` class.
 
 ```java
+import io.smooch.core.Settings;
 import io.smooch.core.Smooch;
+import io.smooch.core.SmoochCallback;
 import com.facebook.soloader.SoLoader;
 
 public class MainApplication extends Application implements ReactApplication {
