@@ -13,7 +13,6 @@ RCT_EXPORT_METHOD(show) {
   });
 };
 
-
 RCT_EXPORT_METHOD(close) {
   NSLog(@"Smooch Close");
 
