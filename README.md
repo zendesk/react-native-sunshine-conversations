@@ -34,12 +34,13 @@ target 'myapp' do
     pod 'react-native-smooch',
         :path => '../node_modules/react-native-smooch'
 
-	pod 'React', :subspecs => [
-        'Core',
-        'RCTImage',
-        'RCTNetwork',
-        'RCTPushNotification',
-        'RCTText',
+	pod 'React',
+        :subspecs => [
+            'Core',
+            'RCTImage',
+            'RCTNetwork',
+            'RCTPushNotification',
+            'RCTText',
         ], :path => '../node_modules/react-native'
 
     pod 'yoga',
