@@ -5,7 +5,7 @@ This React Native module was built and tested with version 0.57.7 of React Nativ
 
 At the moment, this wrapper only covers the most commonly used features of the Smooch SDK. We encourage you to add to this wrapper or make any feature requests you need. Pull requests most definitely welcome!
 
-Please [contact Smooch](mailto:help@smooch.io) for any question.
+Please [contact Smooch](mailto:help@smooch.io) for any questions.
 
 Installing Smooch on React Native
 =================================
