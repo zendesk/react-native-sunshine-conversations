@@ -13,6 +13,14 @@ RCT_EXPORT_METHOD(show) {
   });
 };
 
+RCT_EXPORT_METHOD(close) {
+  NSLog(@"Smooch Close");
+
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [Smooch close];
+    });
+};
+
 RCT_EXPORT_METHOD(login:(NSString*)userId jwt:(NSString*)jwt resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   NSLog(@"Smooch Login");
 

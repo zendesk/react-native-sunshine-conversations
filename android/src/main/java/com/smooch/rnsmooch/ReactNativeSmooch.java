@@ -66,6 +66,11 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void close() {
+        ConversationActivity.close();
+    }
+
+    @ReactMethod
     public void getUnreadCount(Promise promise) {
         int unreadCount = Smooch.getConversation().getUnreadCount();
         promise.resolve(unreadCount);
