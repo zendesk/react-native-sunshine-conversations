@@ -9,11 +9,12 @@ allprojects {
 
 buildscript {
     repositories {
+        google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.4.1'
     }
 }
 
@@ -40,6 +41,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.facebook.react:react-native:+'
-    compile 'io.smooch:core:5.+'
-    compile 'io.smooch:ui:5.+'
+    compile 'io.smooch:core:6.+'
+    compile 'io.smooch:ui:6.+'
 }
