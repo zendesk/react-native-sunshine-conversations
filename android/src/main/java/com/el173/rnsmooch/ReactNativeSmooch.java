@@ -1,4 +1,4 @@
-package com.smooch.rnsmooch;
+package com.el173.rnsmooch;
 
 import android.content.Intent;
 
