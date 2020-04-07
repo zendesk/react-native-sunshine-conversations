@@ -1,16 +1,16 @@
 {
-  "name": "react-native-smooch",
-  "version": "1.0.2",
+  "name": "@el173/react-native-smooch",
+  "version": "1.0.4",
   "description": "A React Native client for smooch.io",
   "main": "./lib/SmoochClient.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/smooch/react-native-smooch.git"
+    "url": "https://github.com/el173/react-native-smooch.git"
   },
-  "author": "Mike Gozzo",
+  "author": "Hashith Karunarathne",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/smooch/react-native-smooch/issues"
+    "url": "https://github.com/el173/react-native-smooch/issues"
   },
   "homepage": "https://smooch.io/is"
 }

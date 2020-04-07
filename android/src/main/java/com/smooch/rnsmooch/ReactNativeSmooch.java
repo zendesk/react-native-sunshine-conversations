@@ -63,6 +63,7 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show() {
         ConversationActivity.show(getReactApplicationContext(), Intent.FLAG_ACTIVITY_NEW_TASK);
+        // ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).show(getReactApplicationContext());
     }
 
     @ReactMethod
