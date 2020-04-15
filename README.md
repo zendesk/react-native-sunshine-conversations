@@ -23,7 +23,7 @@ Link it! `react-native link @el173/react-native-smooch`
 
  ```
  pod 'react-native-smooch',
-     :path => '../node_modules/react-native-smooch'
+     :path => '../node_modules/@el173/react-native-smooch'
  ```
 
  * You must also have your React dependencies defined in your Podfile as described [here](http://facebook.github.io/react-native/releases/0.31/docs/troubleshooting.html#missing-libraries-for-react), for example:
@@ -32,19 +32,7 @@ Link it! `react-native link @el173/react-native-smooch`
 target 'myapp' do
 
     pod 'react-native-smooch',
-        :path => '../node_modules/react-native-smooch'
-
-	pod 'React',
-        :subspecs => [
-            'Core',
-            'RCTImage',
-            'RCTNetwork',
-            'RCTPushNotification',
-            'RCTText',
-        ], :path => '../node_modules/react-native'
-
-    pod 'yoga',
-        path: '../node_modules/react-native/ReactCommon/yoga/yoga.podspec'
+        :path => '../node_modules/@el173/react-native-smooch'
 
 end
  ```
@@ -117,12 +105,17 @@ Using Smooch in your React Native App
 
 ### Require the module
 ```javascript
-const Smooch = require('react-native-smooch');
+import Smooch from '@el173/react-native-smooch';
 ```
 
 ### Show the conversation screen
 ```javascript
 Smooch.show();
+```
+
+### Set the fcm token
+```javascript
+Smooch.setFirebaseCloudMessagingToken("FCM TOKEN");
 ```
 
 ### Set the user's first name
