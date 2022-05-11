@@ -4,6 +4,7 @@ allprojects {
         maven {
             url "https://maven.google.com"
         }
+        maven { url "https://zendesk.jfrog.io/zendesk/repo/" }
     }
 }
 
@@ -11,6 +12,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "https://zendesk.jfrog.io/zendesk/repo/" }
     }
 
     dependencies {
@@ -41,6 +43,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.facebook.react:react-native:+'
-    compile 'io.smooch:core:6.+'
-    compile 'io.smooch:ui:6.+'
+    implementation 'io.smooch:core:8.2.1'
+    implementation 'io.smooch:ui:8.2.1'
 }
